@@ -40,10 +40,8 @@ public class EnvironmentHelper {
 		properties.putIfAbsent(AvailableSettings.IMPLICIT_NAMING_STRATEGY, SpringImplicitNamingStrategy.class.getName());
 		properties.putIfAbsent(AvailableSettings.PHYSICAL_NAMING_STRATEGY, SpringPhysicalNamingStrategy.class.getName());
 		//TODO The bean factory should be added as parameter but that requires that it can be injected from the entityManagerFactory bean from xBaseConfig
-		FhirServerConfigR4 beanFactory = new FhirServerConfigR4();
-		if(beanFactory != null) {
-			properties.putIfAbsent(AvailableSettings.BEAN_CONTAINER, new SpringBeanContainer(beanFactory.entityManagerFactory()));
-		}
+//		FhirServerConfigR4 beanFactory = new FhirServerConfigR4();
+//		properties.putIfAbsent(AvailableSettings.BEAN_CONTAINER, new SpringBeanContainer(beanFactory.entityManagerFactory()));
 
 		//hapi-fhir-jpaserver-base "sensible defaults"
 		Map<String, Object> hapiJpaPropertyMap = new HapiFhirLocalContainerEntityManagerFactoryBean().getJpaPropertyMap();
