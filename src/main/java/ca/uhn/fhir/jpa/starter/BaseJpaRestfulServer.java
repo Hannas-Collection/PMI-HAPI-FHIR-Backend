@@ -121,6 +121,8 @@ public class BaseJpaRestfulServer extends RestfulServer {
      * Create a FhirContext object that uses the version of FHIR
      * specified in the properties file.
      */
+	  setFhirContext(FhirContext.forR4()); //R4 Spezifikation
+
     // Customize supported resource types
     List<String> supportedResourceTypes = appProperties.getSupported_resource_types();
 

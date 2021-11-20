@@ -3,7 +3,7 @@ spring:
     url: 'jdbc:h2:file:./target/database/h2'
     #url: jdbc:h2:mem:test_mem
     username: sa
-    password: null
+    password: "null"
     driverClassName: org.h2.Driver
     max-active: 15
 
@@ -12,8 +12,8 @@ spring:
       maximum-pool-size: 10
   jpa:
     properties:
-      hibernate.format_sql: false
-      hibernate.show_sql: false
+      hibernate.format_sql: true
+      hibernate.show_sql: true
 #      hibernate.dialect: org.hibernate.dialect.h2dialect
 #      hibernate.hbm2ddl.auto: update
 #      hibernate.jdbc.batch_size: 20

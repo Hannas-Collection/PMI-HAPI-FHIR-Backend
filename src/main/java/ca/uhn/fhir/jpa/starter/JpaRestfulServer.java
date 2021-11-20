@@ -1,19 +1,12 @@
 package ca.uhn.fhir.jpa.starter;
 
-//import ca.uhn.fhir.context.FhirContext;
-//import ca.uhn.fhir.jpa.rp.r4.ObservationResourceProvider;
-//import ca.uhn.fhir.jpa.starter.ResourceProvider.PatientResourceProviderOld;
-//import ca.uhn.fhir.rest.server.IResourceProvider;
 import ca.uhn.fhir.context.FhirContext;
-import ca.uhn.fhir.jpa.rp.r4.ObservationResourceProvider;
-import ca.uhn.fhir.jpa.rp.r4.PatientResourceProvider;
-import ca.uhn.fhir.rest.server.IResourceProvider;
+import ca.uhn.fhir.jpa.starter.resourceProviders.QuestionnaireResourceProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
 
 import javax.servlet.ServletException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 @Import(AppProperties.class)
 public class JpaRestfulServer extends BaseJpaRestfulServer {
@@ -31,16 +24,14 @@ public class JpaRestfulServer extends BaseJpaRestfulServer {
   protected void initialize() throws ServletException {
     super.initialize();
 
-	  // Add your own customization here
-	  /**
-		* @since 16.11.2021
-		*/
-	  setFhirContext(FhirContext.forR4()); //Verwendung der FHIR Spezifikation R4
+    // Add your own customization here
+	  setFhirContext(FhirContext.forR4()); // R4 Spezifikation
 
-	  List<IResourceProvider> resourceProviders = new ArrayList<IResourceProvider>();
-	  resourceProviders.add(new PatientResourceProvider());
-	  resourceProviders.add(new ObservationResourceProvider());
-	  setResourceProviders(resourceProviders);
+//	  setResourceProviders(Arrays.asList(
+//		  myApplicationContext.getBean(QuestionnaireResourceProvider.class),
+//		  myApplicationContext.getBean(QuestionnaireResourceProvider.class))
+//	  ); // holt die resource providers für den Server
+
   }
 
 }
