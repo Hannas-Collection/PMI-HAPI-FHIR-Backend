@@ -547,5 +547,17 @@
                 </dependency>
             </dependencies>
         </profile>
+
+        <profile>
+            <id>tomcat</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                    <version>${spring_boot_version}</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
     </profiles>
 </project>
