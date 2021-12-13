@@ -1,5 +1,6 @@
 package ca.uhn.fhir.jpa.starter;
 
+import ca.uhn.fhir.context.FhirContext;
 import ca.uhn.fhir.jpa.config.HapiFhirLocalContainerEntityManagerFactoryBean;
 import ca.uhn.fhir.jpa.search.HapiLuceneAnalysisConfigurer;
 import ca.uhn.fhir.jpa.search.elastic.ElasticsearchHibernatePropertiesBuilder;
@@ -14,6 +15,7 @@ import org.hibernate.search.engine.cfg.BackendSettings;
 import org.hibernate.search.mapper.orm.automaticindexing.session.AutomaticIndexingSynchronizationStrategyNames;
 import org.hibernate.search.mapper.orm.cfg.HibernateOrmMapperSettings;
 import org.hibernate.search.mapper.orm.schema.management.SchemaManagementStrategyName;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy;
 import org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy;
 import org.springframework.core.env.CompositePropertySource;
@@ -21,6 +23,7 @@ import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.env.EnumerablePropertySource;
 import org.springframework.core.env.PropertySource;
 import org.springframework.orm.hibernate5.SpringBeanContainer;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 
 import java.util.*;
 
@@ -39,7 +42,8 @@ public class EnvironmentHelper {
 		properties.putIfAbsent(AvailableSettings.IMPLICIT_NAMING_STRATEGY, SpringImplicitNamingStrategy.class.getName());
 		properties.putIfAbsent(AvailableSettings.PHYSICAL_NAMING_STRATEGY, SpringPhysicalNamingStrategy.class.getName());
 		//TODO The bean factory should be added as parameter but that requires that it can be injected from the entityManagerFactory bean from xBaseConfig
-		//properties.putIfAbsent(AvailableSettings.BEAN_CONTAINER, new SpringBeanContainer(beanFactory));
+//		LocalContainerEntityManagerFactoryBean beanfactory = new FhirServerConfigR4().entityManagerFactory();
+//		properties.putIfAbsent(AvailableSettings.BEAN_CONTAINER, new SpringBeanContainer((ConfigurableListableBeanFactory) beanfactory));
 
 		//hapi-fhir-jpaserver-base "sensible defaults"
 		Map<String, Object> hapiJpaPropertyMap = new HapiFhirLocalContainerEntityManagerFactoryBean().getJpaPropertyMap();
