@@ -46,7 +46,7 @@ hapi:
 ### alternatively, it may be set using the X-Forwarded-Proto header.
 #   use_apache_address_strategy_https: false
 ### enable to set the Server URL
-#    server_address: http://hapi.fhir.org/baseR4
+    server_address: http://praktikum.mi.intern:8080/fhir-pmi/fhir/
 #    defer_indexing_for_codesystems_of_size: 101
 #    install_transitive_ig_dependencies: true
 #    implementationguides:
@@ -117,7 +117,7 @@ hapi:
     tester:
         home:
           name: Local Tester
-          server_address: 'http://localhost:8080/fhir-pmi'
+          server_address: 'http://localhost:8080/fhir-pmi/fhir'
           refuse_to_fetch_third_party_urls: false
           fhir_version: R4
         global:
