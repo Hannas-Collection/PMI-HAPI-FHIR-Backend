@@ -1,0 +1,273 @@
+{
+  "resourceType": "QuestionnaireResponse",
+  "id": "2705640",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2021-12-07T22:03:00.637+00:00",
+    "source": "#F6d0A6xWA1MjoWXA"
+  },
+  "questionnaire": "http://hapi.fhir.org/baseR4/Questionnaire/2696102",
+  "status": "in-progress",
+  "authored": "2021-12-06",
+  "item": [
+    {
+      "linkId": "Q1",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "Q2",
+      "answer": [
+        {
+          "valueBoolean": false
+        }
+      ]
+    },
+    {
+      "linkId": "Q3",
+      "item": [
+        {
+          "linkId": "Q3.1",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ],
+          "item": [
+            {
+              "linkId": "Q3.1.1"
+            }
+          ]
+        },
+        {
+          "linkId": "Q3.4",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ],
+          "item": [
+            {
+              "linkId": "Q3.2",
+              "answer": [
+                {
+                  "valueBoolean": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q5",
+      "item": [
+        {
+          "linkId": "Q5.3",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q6",
+      "item": [
+        {
+          "linkId": "Q6.1",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q7",
+      "item": [
+        {
+          "linkId": "Q7.1",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "Q7.2",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q8",
+      "item": [
+        {
+          "linkId": "Q8.4",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ],
+          "item": [
+            {
+              "linkId": "Q8.4.1",
+              "answer": [
+                {
+                  "valueString": "Schlosser"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q9",
+      "answer": [
+        {
+          "valueInteger": 1998
+        }
+      ]
+    },
+    {
+      "linkId": "Q10",
+      "answer": [
+        {
+          "valueInteger": 1995
+        }
+      ]
+    },
+    {
+      "linkId": "Q11",
+      "item": [
+        {
+          "linkId": "Q11.3",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "Q11.3.1",
+          "answer": [
+            {
+              "valueString": "muslin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q12",
+      "item": [
+        {
+          "linkId": "Q12.3",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ]
+        },
+        {
+          "linkId": "Q12.3.1",
+          "answer": [
+            {
+              "valueString": "muslin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "linkId": "Q13.1",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "Q14",
+      "answer": [
+        {
+          "valueInteger": 1
+        }
+      ]
+    },
+    {
+      "linkId": "Q15",
+      "answer": [
+        {
+          "valueInteger": 1
+        }
+      ]
+    },
+    {
+      "linkId": "Q16.1",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "Q17.2.2",
+      "answer": [
+        {
+          "valueInteger": 3
+        }
+      ]
+    },
+    {
+      "linkId": "Q18.6",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "Q19.1",
+      "answer": [
+        {
+          "valueBoolean": true
+        }
+      ]
+    },
+    {
+      "linkId": "Q20",
+      "item": [
+        {
+          "linkId": "Q20.4",
+          "answer": [
+            {
+              "valueBoolean": true
+            }
+          ],
+          "item": [
+            {
+              "linkId": "Q20.4.1",
+              "answer": [
+                {
+                  "valueString": "SuperApp"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
