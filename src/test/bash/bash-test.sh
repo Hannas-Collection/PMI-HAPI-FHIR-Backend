@@ -1,15 +1,12 @@
 #! /bin/bash
-#
-# bash-test.sh
-#
-#
+
 BOLD="\033[1m"
 NORMAL="\033[0m"
 GREEN="\033[32m"
 RED="\033[31m"
 GRAY="\033[90m"
 
-export BASE_URL="http://hapi.fhir.org/baseR4"
+# export BASE_URL="http://praktikum.mi.intern:8080/fhir-pmi/fhir"
 
 # bash-test.sh --verbose --url http://localhost/baseR4 src/test/bash/testcases
 

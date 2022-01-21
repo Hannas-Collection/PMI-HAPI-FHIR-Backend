@@ -6,7 +6,7 @@ slow() {
   newid=$(openssl rand -hex 16)
 
   result=$(curl -s -X 'PUT' \
-    "http://hapi.fhir.org/baseR4/Questionnaire/${newid}" \
+    "${BASE_URL:-http://hapi.fhir.org/baseR4}/Questionnaire/${newid}" \
     -H 'accept: application/fhir+json' \
     -H 'Content-Type: application/fhir+json' \
     -d '{
@@ -42,12 +42,12 @@ slow() {
 fast() {
   newid=$(openssl rand -hex 16)
 
-
+# 2. Im Header wird 'X-Upsert-Existence-Check: disabled' eingefügt.
   result=$(curl -s -X 'PUT' \
-    "http://hapi.fhir.org/baseR4/Questionnaire/${newid}" \
+    "${BASE_URL:-http://hapi.fhir.org/baseR4}/Questionnaire/${newid}" \
     -H 'accept: application/fhir+json' \
     -H 'Content-Type: application/fhir+json' \
-    -H 'X-Upsert-Extistence-Check: disabled' \
+    -H 'X-Upsert-Existence-Check: disabled' \
     -d '{
   	"resourceType": "Questionnaire",
     "id": "'${newid}'",
@@ -78,26 +78,33 @@ fast() {
   }')
 }
 
+AMOUNT=20
+
 i=0
 start=$(date '+%s')
-while [ $i -le 10 ]; do
+while [ $i -le $AMOUNT ]; do
   slow
   i=$((i+1))
 done
 end=$(date '+%s')
 slowtime=$((end-start))
-echo $slowtime
+echo "$AMOUNT Einfügeoperationen ohne 'X-Upsert-Existence-Check: disabled' dauern" $slowtime "Sekunden"
 
 
 i=0
 start=$(date '+%s')
-while [ $i -le 10 ]; do
+while [ $i -le $AMOUNT ]; do
   fast
   i=$((i+1))
 done
 end=$(date '+%s')
 fasttime=$((end-start))
-echo $fasttime
+echo "$AMOUNT Einfügeoperationen mit 'X-Upsert-Existence-Check: disabled' dauern" $fasttime "Sekunden"
 
-# Slow muss in 10 Durchlaeufen insgesamt min. 5 Sekunden langsamer sein
-test $slowtime -ge $((fasttime+5))
+# 3. Slow muss in 20 Durchlaeufen insgesamt min. 10 Sekunden langsamer sein
+if ! test $slowtime -ge $((fasttime+$((AMOUNT/2)))); then
+  echo "Zeit für $AMOUNT Anfragen ohne 'X-Upsert-Existence-Check: disabled': " $slowtime >&2
+  echo "Zeit für $AMOUNT Anfragen mit 'X-Upsert-Existence-Check: disabled': " $fasttime >&2
+  echo "'X-Upsert-Existence-Check: disabled' macht die Ausführung im Mittel nicht um 0,5 Sekunden schneller." >&2
+  exit 1
+fi
