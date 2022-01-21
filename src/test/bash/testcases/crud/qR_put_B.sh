@@ -2,30 +2,29 @@
 
 # 1. Fragebogen anlegen
 result=$(curl -s -X 'POST' \
-  "${BASE_URL:-http://hapi.fhir.org/baseR4}/Questionnaire" \
+  "${BASE_URL:-http://hapi.fhir.org/baseR4}/QuestionnaireResponse" \
   -H 'accept: application/fhir+json' \
   -H 'Content-Type: application/fhir+json' \
-  -d @src/test/resources/questionnaire.json)
+  -d @src/test/resources/questionnaireResponseB.json)
 
 # 2. ID raussuchen
 id=$(echo $result | jq -r '.id')
 
 downloaded_questionnaire=$(curl -s -X 'GET' \
-  "http://hapi.fhir.org/baseR4/Questionnaire/$id" \
+  "${BASE_URL:-http://hapi.fhir.org/baseR4}/QuestionnaireResponse/$id" \
   -H 'accept: application/fhir+json')
 
-manipulated_questionnaire=$(echo "$downloaded_questionnaire" | jq ". + {\"title\": \"$(pwgen 10 1)\"}")
+manipulated_questionnaire=$(echo "$downloaded_questionnaire" | jq ". + {\"status\": \"completed\"}")
 
-# 3. Veraendern des Fragebogens
 newResult=$(curl -X 'PUT' \
-  "http://hapi.fhir.org/baseR4/Questionnaire/$id" \
+  "${BASE_URL:-http://hapi.fhir.org/baseR4}/QuestionnaireResponse/$id" \
   -H 'accept: application/fhir+json' \
   -H 'Content-Type: application/fhir+json' \
   -d "$manipulated_questionnaire")
 
-# 4. Veraenderten Fragebogen raussuchen
+# 3. Fragebogen raussuchen
 downloaded_questionnaire=$(curl -s -X 'GET' \
-  "http://hapi.fhir.org/baseR4/Questionnaire/$id" \
+  "${BASE_URL:-http://hapi.fhir.org/baseR4}/QuestionnaireResponse/$id" \
   -H 'accept: application/fhir+json')
 
 # 4. Vergleich der JSON Objekte

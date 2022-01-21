@@ -12,13 +12,13 @@ id=$(echo $result | jq -r '.id')
 
 # 3. Fragebogen löschen
 curl -s -X 'DELETE' \
-  "http://hapi.fhir.org/baseR4/Questionnaire/$id" \
+  "${BASE_URL:-http://hapi.fhir.org/baseR4}/Questionnaire/$id" \
   -H 'accept: application/fhir+json' > /dev/null
 
 # 4. Fragebogen raussuchen
 status=$(curl -I -s -X 'GET' \
     -H 'accept: application/fhir+json' \
-    "http://hapi.fhir.org/baseR4/Questionnaire/$id" | \
+    "${BASE_URL:-http://hapi.fhir.org/baseR4}/Questionnaire/$id" | \
       grep "HTTP/1.1" | cut -d' ' -f2)
 
 # 5. Vergleich des HTTP Status
